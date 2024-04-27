@@ -5,16 +5,15 @@ import logging
 import requests
 import pandas as pd
 
-def get_papel(papel, simplificado):
+def get_papel(papel, resumo):
     df_fundamentus = _get_html_data_frame_fundamentus(papel)
 
     if (df_fundamentus is None):
         return None
 
     data_dict = _get_dict_papel_from_data_frame(df_fundamentus)
-    logging.info(data_dict)
 
-    return _to_json(data_dict, simplificado)
+    return _to_json(data_dict, resumo)
 
 def _get_dict_papel_from_data_frame(df_fundamentus):
     data_dict = {}
@@ -39,8 +38,17 @@ def _get_html_data_frame_fundamentus(papel):
     except Exception:
         return None
     
-def _to_json(papel_dict, simplificado):
-    if (simplificado):
-        return jsonconverter.to_json_simplificado(papel_dict)
+def _to_json(papel_dict, resumo):
+    if is_fii(papel_dict):
+        if resumo:
+            return jsonconverter.to_json_fii_resumo(papel_dict)
+        else:
+            return jsonconverter.to_json_fii(papel_dict)
     else:
-        return jsonconverter.to_json(papel_dict)
+        if resumo:
+            return jsonconverter.to_json_acao_resumo(papel_dict)
+        else:
+            return jsonconverter.to_json_acao(papel_dict)
+
+def is_fii(papel_dict):
+    return 'FII' in papel_dict

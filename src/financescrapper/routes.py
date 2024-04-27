@@ -12,8 +12,8 @@ def index():
 
 @main_bp.route('/papel/<papel>', methods=['GET'])
 def papel(papel):
-    simplificado = request.args.get('simplificado', default=False, type=bool)
-    dados_papel = fundamentus.get_papel(papel, simplificado)
+    resumo = request.args.get('resumo', default=False, type=bool)
+    dados_papel = fundamentus.get_papel(papel, resumo)
 
     if dados_papel is None:
         return jsonify({'error': 'Não foi possível obter os dados do papel.'}), 404
