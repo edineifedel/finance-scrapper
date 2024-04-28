@@ -2,8 +2,15 @@ import unicodedata
 
 def normalize_key(key):
     normalized_key = unicodedata.normalize('NFKD', key).encode('ASCII', 'ignore').decode('utf-8')
-    normalized_key = normalized_key.strip('?').replace('.', '')
-    normalized_key = normalized_key.replace(' / ', '_').replace(' ', '_').replace('/', '_')
+    normalized_key = normalized_key.strip('?')
+    normalized_key = normalized_key.replace(' / ', '_')
+    normalized_key = normalized_key.replace(' ', '_')
+    normalized_key = normalized_key.replace('/', '_')
+    normalized_key = normalized_key.replace('.', '')
+    normalized_key = normalized_key.replace('(', '')
+    normalized_key = normalized_key.replace(')', '')
+    normalized_key = normalized_key.replace('$', '')
+    normalized_key = normalized_key.replace('__', '_')
     return normalized_key
 
 def normalize_value(value):

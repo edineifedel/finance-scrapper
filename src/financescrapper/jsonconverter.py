@@ -3,7 +3,7 @@ import json
 def to_json_acao_resumo(papel_dict):
     json_base = {
         "papel": papel_dict.get("Papel", None),
-        "cotacao": papel_dict.get("Cotação", None),
+        "cotacao": papel_dict.get("Cotacao", None),
         "empresa": papel_dict.get("Empresa", None),
         "pl": papel_dict.get("P_L", None),
         "lpa": papel_dict.get("LPA", None),
@@ -13,13 +13,12 @@ def to_json_acao_resumo(papel_dict):
         "roic": papel_dict.get("ROIC", None),
         "dy": papel_dict.get("Div_Yield", None),
         "roe": papel_dict.get("ROE", None),
-        "ev_ebitda": papel_dict.get("EV_EBITDA", None),
         "div_bruta_patrim": papel_dict.get("Div_Br_Patrim", None),
         "cres_rec_5a": papel_dict.get("Cres_Rec_5a", None),
         "receita_liquida": papel_dict.get("Receita_Liquida", None),
         "ebit": papel_dict.get("EBIT", None),
         "lucro_liquido": papel_dict.get("Lucro_Liquido", None),
-        "patrim_liquido": papel_dict.get("Patrim_Liquido", None),
+        "patrim_liquido": papel_dict.get("Patrim_Liq", None),
         "disponibilidades": papel_dict.get("Disponibilidades", None),
         "div_liquida": papel_dict.get("Div_Liquida", None)
     }
@@ -28,7 +27,7 @@ def to_json_acao_resumo(papel_dict):
 def to_json_acao(papel_dict):
     json_base = {
         "papel": papel_dict.get("Papel", None),
-        "cotacao": papel_dict.get("Cotação", None),
+        "cotacao": papel_dict.get("Cotacao", None),
         "tipo": papel_dict.get("Tipo", None),
         "data_ult_cot": papel_dict.get("Data_ult_cot", None),
         "empresa": papel_dict.get("Empresa", None),
@@ -38,12 +37,12 @@ def to_json_acao(papel_dict):
         "subsetor": papel_dict.get("Subsetor", None),
         "vol_med_2m": papel_dict.get("Vol_med_2m", None),
         "valor_de_mercado": papel_dict.get("Valor_de_mercado", None),
-        "ult_balanco_processado": papel_dict.get("Últ_balanco_processado", None),
+        "ult_balanco_processado": papel_dict.get("Ult_balanco_processado", None),
         "valor_da_firma": papel_dict.get("Valor_da_firma", None),
         "nro_Acoes": papel_dict.get("Nro_Acoes", None),
         "oscilacoes": {
             "dia": papel_dict.get("Dia", None),
-            "mes": papel_dict.get("Mês", None),
+            "mes": papel_dict.get("Mes", None),
             "30_dias": papel_dict.get("30_dias", None),
             "12_meses": papel_dict.get("12_meses", None),
             "2024": papel_dict.get("2024", None),
@@ -83,7 +82,7 @@ def to_json_acao(papel_dict):
             "disponibilidades": papel_dict.get("Disponibilidades", None),
             "div_liquida": papel_dict.get("Div_Liquida", None),
             "ativo_circulante": papel_dict.get("Ativo_Circulante", None),
-            "patrim_liquido": papel_dict.get("Patrim_Liquido", None)
+            "patrim_liquido": papel_dict.get("Patrim_Liq", None)
         },
         "dados_demonstrativos_de_resultados": {
             "ultimos_12_meses": {
@@ -124,14 +123,14 @@ def to_json_fii(papel_dict):
         "segmento": papel_dict.get("Segmento", None),
         "max_52_sem": papel_dict.get("Max_52_sem", None),
         "gestao": papel_dict.get("Gestao", None),
-        "vol_$_med_(2m)": papel_dict.get("Vol_$_med_(2m)", None),
+        "vol_$_med_(2m)": papel_dict.get("Vol_med_2m", None),
         "valor_de_mercado": papel_dict.get("Valor_de_mercado", None),
         "nro_cotas": papel_dict.get("Nro_Cotas", None),
         "relatorio": papel_dict.get("Relatorio", None),
         "ult_info_trimestral": papel_dict.get("Ult_Info_Trimestral", None),
         "oscilacoes": {
             "dia": papel_dict.get("Dia", None),
-            "mes": papel_dict.get("Mês", None),
+            "mes": papel_dict.get("Mes", None),
             "30_dias": papel_dict.get("30_dias", None),
             "12_meses": papel_dict.get("12_meses", None),
             "2024": papel_dict.get("2024", None),
@@ -163,7 +162,7 @@ def to_json_fii(papel_dict):
         },
         "imoveis": {
             "qtd_imoveis": papel_dict.get("Qtd_imoveis", None),
-            "area_(m2)": papel_dict.get("Area_(m2)", None),
+            "area_(m2)": papel_dict.get("Area_m2", None),
             "cap_rate": papel_dict.get("Cap_Rate", None),
             "qtd_Unidades": papel_dict.get("Qtd_Unidades", None),
             "aluguel_m2": papel_dict.get("Aluguel_m2", None),
