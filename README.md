@@ -20,7 +20,7 @@ docker run --rm -p 5000:5000 --name finance-scrapper finance-scrapper
 
 ## Exemplo de Uso para Ações
 
-- GET /papel/wege3?resumo=true
+- GET `/papel/wege3?resumo=true`
 
 ## Exemplo de Saída
 
@@ -50,7 +50,7 @@ Também é possível obter informações sobre Fundos Imobiliários (FIIs):
 
 ## Exemplo de Uso para FIIs
 
-- GET /papel/hglg11?resumo=true
+- GET `/papel/hglg11?resumo=true`
 
 ## Exemplo de Saída para FIIs
 
