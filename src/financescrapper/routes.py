@@ -8,7 +8,7 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/', methods=['GET'])
 def index():
-    return 'Fundamentus!'
+    return 'Finance Scrapper'
 
 @main_bp.route('/papel/<papel>', methods=['GET'])
 def papel(papel):
