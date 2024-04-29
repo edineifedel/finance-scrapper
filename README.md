@@ -80,5 +80,5 @@ Também é possível obter informações sobre Fundos Imobiliários (FIIs):
 
 Para acessar as informações completas de um papel:
 
-- /papel/wege3
-- /papel/hglg11
+- GET `/papel/wege3`
+- GET `/papel/hglg11`
