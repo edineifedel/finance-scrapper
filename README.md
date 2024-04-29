@@ -12,7 +12,14 @@ O Finance Scrapper é um projeto que realiza web scraping do site https://www.fu
 
 - Docker
 
-## Exemplo para Execução
+## Passos
+
+1. **Build**
+```bash
+docker build -t finance-scrapper .
+```
+
+2. **Run**
 
 ```bash
 docker run --rm -p 5000:5000 --name finance-scrapper finance-scrapper
