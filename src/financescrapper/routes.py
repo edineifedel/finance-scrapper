@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import fundamentus
+from . import finviz
 
 from flask import Blueprint, request, jsonify
 
@@ -19,3 +20,12 @@ def papel(papel):
         return jsonify({'error': 'Não foi possível obter os dados do papel.'}), 404
 
     return dados_papel
+
+@main_bp.route('/ticker/<ticker>', methods=['GET'])
+def ticker(ticker):
+    dados_ticker = finviz.get_ticker(ticker)
+
+    if dados_ticker is None:
+        return jsonify({'error': 'Não foi possível obter os dados do ticker.'}), 404
+
+    return dados_ticker

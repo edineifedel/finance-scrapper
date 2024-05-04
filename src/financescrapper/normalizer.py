@@ -6,6 +6,7 @@ def normalize_key(key):
     normalized_key = normalized_key.replace(' / ', '_')
     normalized_key = normalized_key.replace(' ', '_')
     normalized_key = normalized_key.replace('/', '_')
+    normalized_key = normalized_key.replace('-', '_')
     normalized_key = normalized_key.replace('.', '')
     normalized_key = normalized_key.replace('(', '')
     normalized_key = normalized_key.replace(')', '')

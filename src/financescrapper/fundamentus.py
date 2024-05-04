@@ -1,5 +1,6 @@
 from . import normalizer
 from . import jsonconverter
+from . import utils
 
 import logging
 import requests
@@ -11,22 +12,9 @@ def get_papel(papel, resumo):
     if (df_fundamentus is None):
         return None
 
-    data_dict = _get_dict_papel_from_data_frame(df_fundamentus)
+    data_dict = utils.get_dict_papel_from_data_frame(df_fundamentus)
 
     return _to_json(data_dict, resumo)
-
-def _get_dict_papel_from_data_frame(df_fundamentus):
-    data_dict = {}
-    for index, row in df_fundamentus.iterrows():
-        row = row.dropna()
-        if len(row) > 0:
-            keys = row.iloc[::2].tolist()
-            values = row.iloc[1::2].tolist()
-            for key, value in zip(keys, values):
-                normalized_key = normalizer.normalize_key(key)
-                if normalized_key not in data_dict:
-                    data_dict[normalized_key] = normalizer.normalize_value(value)
-    return data_dict
 
 def _get_html_data_frame_fundamentus(papel):
     try:
@@ -40,15 +28,9 @@ def _get_html_data_frame_fundamentus(papel):
     
 def _to_json(papel_dict, resumo):
     if is_fii(papel_dict):
-        if resumo:
-            return jsonconverter.to_json_fii_resumo(papel_dict)
-        else:
-            return jsonconverter.to_json_fii(papel_dict)
+        return jsonconverter.to_json_fii(papel_dict, resumo)
     else:
-        if resumo:
-            return jsonconverter.to_json_acao_resumo(papel_dict)
-        else:
-            return jsonconverter.to_json_acao(papel_dict)
+        return jsonconverter.to_json_acao(papel_dict, resumo)
 
 def is_fii(papel_dict):
     return 'FII' in papel_dict

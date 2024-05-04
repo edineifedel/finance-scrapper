@@ -1,6 +1,6 @@
 # Finance Scrapper
 
-O Finance Scrapper é um projeto que realiza web scraping do site https://www.fundamentus.com.br e disponibiliza as informações através de APIs REST.
+O Finance Scrapper é um projeto que realiza web scraping de sites como https://www.fundamentus.com.br e https://finviz.com e disponibiliza as informações através de APIs REST.
 
 ## Tecnologias Utilizadas
 
@@ -82,3 +82,39 @@ Para acessar as informações completas de um papel:
 
 - GET `/papel/wege3`
 - GET `/papel/hglg11`
+
+
+## Exemplo de Uso para Stocks e REITs
+
+- GET `/ticker/msft`
+- GET `/ticker/avb`
+
+## Exemplo de Saída para Stocks e REITs
+
+```json
+{
+   "index": "DJIA. NDX. S&P 500",
+   "price": 406.66,
+   "market_cap": "3022.42B",
+   "forward_p_e": 30.46,
+   "income": "86.18B",
+   "sales": "236.58B",
+   "dividend_ttm": "2.86 (0.70%)",
+   "dividend_est": "2.95 (0.73%)",
+   "dividend_ex_date": "May 15. 2024",
+   "eps_next_y": 13.35,
+   "eps_this_y": "20.25%",
+   "peg": 2.17,
+   "p_e": 35.24,
+   "p_s": 12.78,
+   "p_b": 11.94,
+   "p_fcf": 42.83,
+   "roe": "38.49%",
+   "roi": "26.01%",
+   "profit_margin": "36.43%",
+   "gross_margin": "69.89%",
+   "perf_year": "33.59%",
+   "debt_eq": 0.42,
+   "target_price": 479.04
+}
+```

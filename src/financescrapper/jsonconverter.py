@@ -1,6 +1,12 @@
 import json
 
-def to_json_acao_resumo(papel_dict):
+def to_json_acao(papel_dict, resumo):
+    if (resumo):
+        return _to_json_acao_resumo(papel_dict)
+    else:
+        return _to_json_acao(papel_dict)
+
+def _to_json_acao_resumo(papel_dict):
     json_base = {
         "papel": papel_dict.get("Papel", None),
         "cotacao": papel_dict.get("Cotacao", None),
@@ -24,7 +30,7 @@ def to_json_acao_resumo(papel_dict):
     }
     return json.dumps(json_base, ensure_ascii=False, indent=4)
 
-def to_json_acao(papel_dict):
+def _to_json_acao(papel_dict):
     json_base = {
         "papel": papel_dict.get("Papel", None),
         "cotacao": papel_dict.get("Cotacao", None),
@@ -94,7 +100,13 @@ def to_json_acao(papel_dict):
     }
     return json.dumps(json_base, ensure_ascii=False, indent=4)
 
-def to_json_fii_resumo(papel_dict):
+def to_json_fii(papel_dict, resumo):
+    if resumo:
+        return _to_json_fii_resumo(papel_dict)
+    else:
+        return _to_json_fii(papel_dict)
+
+def _to_json_fii_resumo(papel_dict):
     json_base = {
         "fii": papel_dict.get("FII", None),
         "cotacao": papel_dict.get("Cotacao", None),
@@ -112,7 +124,7 @@ def to_json_fii_resumo(papel_dict):
     return json.dumps(json_base, ensure_ascii=False, indent=4)
 
 
-def to_json_fii(papel_dict):
+def _to_json_fii(papel_dict):
     json_base = {
         "fii": papel_dict.get("FII", None),
         "cotacao": papel_dict.get("Cotacao", None),
@@ -170,5 +182,33 @@ def to_json_fii(papel_dict):
             "imoveis_pl_do_fii": papel_dict.get("Imoveis_PL_do_FII", None),
             "preco_do_m2": papel_dict.get("Preco_do_m2", None),
         }
+    }
+    return json.dumps(json_base, ensure_ascii=False, indent=4)
+
+def to_json_ticker(ticker_dict):
+    json_base = {
+        "index": ticker_dict.get("Index", None),
+        "price": ticker_dict.get("Price", None),
+        "market_cap": ticker_dict.get("Market_Cap", None),
+        "forward_p_e": ticker_dict.get("Forward_P_E", None),
+        "income": ticker_dict.get("Income", None),
+        "sales": ticker_dict.get("Sales", None),
+        "dividend_ttm": ticker_dict.get("Dividend_TTM", None),
+        "dividend_est": ticker_dict.get("Dividend_Est", None),
+        "dividend_ex_date": ticker_dict.get("Dividend_Ex_Date", None),
+        "eps_next_y": ticker_dict.get("EPS_next_Y", None),
+        "eps_this_y": ticker_dict.get("EPS_this_Y", None),
+        "peg": ticker_dict.get("PEG", None),
+        "p_e": ticker_dict.get("P_E", None),
+        "p_s": ticker_dict.get("P_S", None),
+        "p_b": ticker_dict.get("P_B", None),
+        "p_fcf": ticker_dict.get("P_FCF", None),
+        "roe": ticker_dict.get("ROE", None),
+        "roi": ticker_dict.get("ROI", None),
+        "profit_margin": ticker_dict.get("Profit_Margin", None),
+        "gross_margin": ticker_dict.get("Gross_Margin", None),
+        "perf_year": ticker_dict.get("Perf_Year", None),
+        "debt_eq": ticker_dict.get("Debt_Eq", None),
+        "target_price": ticker_dict.get("Target_Price", None)
     }
     return json.dumps(json_base, ensure_ascii=False, indent=4)
