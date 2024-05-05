@@ -1,3 +1,5 @@
+from .normalizer import normalize_value
+
 import json
 
 def to_json_acao(papel_dict, resumo):
@@ -212,3 +214,21 @@ def to_json_ticker(ticker_dict):
         "target_price": ticker_dict.get("Target_Price", None)
     }
     return json.dumps(json_base, ensure_ascii=False, indent=4)
+
+def to_json_proventos(json_proventos_status_invest):
+    if "datePayment" in json_proventos_status_invest:
+        pagamentos = []
+        for pagamento in json_proventos_status_invest["datePayment"]:
+            novo_pagamento = {
+                "codigo": pagamento["code"],
+                "valor": normalize_value(pagamento["resultAbsoluteValue"]),
+                "tipo": pagamento["earningType"],
+                "data_com": pagamento["dateCom"],
+                "data_pagamento": pagamento["paymentDividend"],
+                "dy": normalize_value(pagamento["dy"])
+            }
+            pagamentos.append(novo_pagamento)
+        json_base = { "proventos": pagamentos }
+        return json.dumps(json_base, ensure_ascii=False, indent=4)
+    else:
+        return None
